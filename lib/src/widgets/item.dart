@@ -61,12 +61,19 @@ class _Flag extends StatelessWidget {
                   )
                 : country?.flagUri != null
                     ? CircleAvatar(
-                      child: Image.asset(
-                          country?.flagUri,
-                          width: 32.0,
-                          package: 'intl_phone_number_input',
-                        ),
+                      backgroundImage: AssetImage(
+                        country?.flagUri,
+                        package: 'intl_phone_number_input',
+                      ),
                     )
+//            CircleAvatar(
+//                      child: Image.asset(
+//                          country?.flagUri,
+//
+////                          width: 32.0,
+//                          package: 'intl_phone_number_input',
+//                        ),
+//                    )
                     : SizedBox.shrink(),
           )
         : SizedBox.shrink();
