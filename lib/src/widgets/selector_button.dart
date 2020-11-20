@@ -15,6 +15,7 @@ class SelectorButton extends StatelessWidget {
   final bool autoFocusSearchField;
   final String locale;
   final bool isEnabled;
+  final bool showCode;
   final bool isScrollControlled;
 
   final ValueChanged<Country> onCountryChanged;
@@ -30,6 +31,7 @@ class SelectorButton extends StatelessWidget {
     @required this.locale,
     @required this.onCountryChanged,
     @required this.isEnabled,
+    @required this.showCode,
     @required this.isScrollControlled,
   }) : super(key: key);
 
@@ -45,6 +47,7 @@ class SelectorButton extends StatelessWidget {
                     showFlag: selectorConfig.showFlags,
                     useEmoji: selectorConfig.useEmoji,
                     textStyle: selectorTextStyle,
+                    showCode: showCode,
                   ),
                   value: country,
                   items: mapCountryToDropdownItem(countries),
@@ -56,6 +59,7 @@ class SelectorButton extends StatelessWidget {
                 showFlag: selectorConfig.showFlags,
                 useEmoji: selectorConfig.useEmoji,
                 textStyle: selectorTextStyle,
+                showCode: showCode,
               )
         : MaterialButton(
             key: Key(TestHelper.DropdownButtonKeyValue),
@@ -85,6 +89,7 @@ class SelectorButton extends StatelessWidget {
                 showFlag: selectorConfig.showFlags,
                 useEmoji: selectorConfig.useEmoji,
                 textStyle: selectorTextStyle,
+                showCode: showCode,
               ),
             ),
           );

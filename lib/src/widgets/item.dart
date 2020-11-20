@@ -5,6 +5,7 @@ import 'package:intl_phone_number_input/src/utils/util.dart';
 class Item extends StatelessWidget {
   final Country country;
   final bool showFlag;
+  final bool showCode;
   final bool useEmoji;
   final TextStyle textStyle;
   final bool withCountryNames;
@@ -13,6 +14,7 @@ class Item extends StatelessWidget {
     Key key,
     this.country,
     this.showFlag,
+    this.showCode,
     this.useEmoji,
     this.textStyle,
     this.withCountryNames = false,
@@ -31,11 +33,11 @@ class Item extends StatelessWidget {
             useEmoji: useEmoji,
           ),
           SizedBox(width: 12.0),
-          Text(
+          (showCode)?Text(
             '${(country?.dialCode ?? '').padRight(5, "   ")}',
             textDirection: TextDirection.ltr,
             style: textStyle,
-          ),
+          ):Icon(Icons.keyboard_arrow_down, color: Color(0xFF12326B),),
         ],
       ),
     );
@@ -61,6 +63,7 @@ class _Flag extends StatelessWidget {
                   )
                 : country?.flagUri != null
                     ? CircleAvatar(
+                      radius: 16,
                       backgroundImage: AssetImage(
                         country?.flagUri,
                         package: 'intl_phone_number_input',

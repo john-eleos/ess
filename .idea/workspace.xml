@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9bf5aa30-59ab-4f66-ac10-34a01ab1af69" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/ess.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ess.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widgets/countries_search_list_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/countries_search_list_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widgets/input_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/input_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/widgets/item.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/item.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/widgets/selector_button.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/widgets/selector_button.dart" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
