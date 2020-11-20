@@ -82,8 +82,9 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+        Container(
+          padding: const EdgeInsets.only(left: 15, right: 35, top: 20, bottom: 10),
+          height: 70,
           child: TextFormField(
             key: Key(TestHelper.CountrySearchInputKeyValue),
             decoration: getSearchBoxDecoration(),

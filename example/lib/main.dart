@@ -44,6 +44,13 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             InternationalPhoneNumberInput(
+              inputDecoration: InputDecoration(
+                border: InputBorder.none,
+                focusedBorder: InputBorder.none,
+                enabledBorder: InputBorder.none,
+                errorBorder: InputBorder.none,
+                disabledBorder: InputBorder.none,
+              ),
               onInputChanged: (PhoneNumber number) {
                 print(number.phoneNumber);
               },
@@ -52,7 +59,46 @@ class _MyHomePageState extends State<MyHomePage> {
               },
               selectorConfig: SelectorConfig(
                 selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
-                backgroundColor: Colors.black,
+                backgroundColor: Colors.white,
+              ),
+              searchBoxDecoration: InputDecoration(
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                errorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide(
+                    width: 0,
+                    style: BorderStyle.none,
+                  ),
+                ),
+                fillColor: Colors.blueGrey.withOpacity(0.1),
+                filled: true,
               ),
               ignoreBlank: false,
               autoValidateMode: AutovalidateMode.disabled,
