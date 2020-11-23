@@ -298,7 +298,8 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
             suffixText:decoration?.suffixText,
 
             prefixIcon:Container(
-              width: 80,
+              padding: EdgeInsets.only(left: 20),
+              width: 100,
               child: prefix,
             ),
             prefix:decoration?.prefix,
@@ -311,7 +312,8 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
           border: widget.inputBorder ?? UnderlineInputBorder(),
           hintText: widget.hintText,
           prefixIcon:Container(
-            width: 80,
+            padding: EdgeInsets.only(left: 20),
+            width: 100,
             child: prefix,
           ),
         );
