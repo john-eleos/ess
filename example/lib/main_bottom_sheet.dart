@@ -37,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             InternationalPhoneNumberInput(
+              shape: BoxShape.rectangle,
               onInputChanged: (PhoneNumber number) {
                 print(number.phoneNumber);
               },

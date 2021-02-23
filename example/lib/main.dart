@@ -53,6 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
 //                  errorBorder: InputBorder.none,
 //                  disabledBorder: InputBorder.none,
 //                ),
+                shape: BoxShape.rectangle,
                 onInputChanged: (PhoneNumber number) {
                   print(number.phoneNumber);
                 },
