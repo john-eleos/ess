@@ -74,6 +74,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
   final FocusNode focusNode;
 
   final List<String> countries;
+  final BoxShape shape;
 
   InternationalPhoneNumberInput(
       {Key key,
@@ -106,6 +107,7 @@ class InternationalPhoneNumberInput extends StatefulWidget {
       this.inputDecoration,
       this.searchBoxDecoration,
       this.focusNode,
+      this.shape,
       this.countries})
       : super(key: key);
 
@@ -255,68 +257,66 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
   }
 
   /// Creates or Select [InputDecoration]
-  InputDecoration getInputDecoration({InputDecoration decoration, Widget prefix}) {
-    return decoration != null ?
-        InputDecoration(
-            alignLabelWithHint:decoration?.alignLabelWithHint,
-            border:decoration?.border,
-            contentPadding:decoration?.contentPadding,
-            counter:decoration?.counter,
-            counterStyle:decoration?.counterStyle,
-            counterText:decoration?.counterText,
-            disabledBorder:decoration?.disabledBorder,
-            enabled:decoration?.enabled,
-            enabledBorder:decoration?.enabledBorder,
-            errorBorder:decoration?.errorBorder,
-            errorMaxLines:decoration?.errorMaxLines,
-            errorStyle:decoration?.errorStyle,
-            errorText:decoration?.errorText,
-            fillColor:decoration?.fillColor,
-            filled:decoration?.filled,
-            floatingLabelBehavior:decoration?.floatingLabelBehavior,
-            focusColor:decoration?.focusColor,
-            focusedBorder:decoration?.focusedBorder,
-            focusedErrorBorder:decoration?.focusedErrorBorder,
-            hasFloatingPlaceholder:decoration?.hasFloatingPlaceholder,
-            helperMaxLines:decoration?.helperMaxLines,
-            helperStyle:decoration?.helperStyle,
-            helperText:decoration?.helperText,
-            hintMaxLines:decoration?.hintMaxLines,
-            hintStyle:decoration?.hintStyle,
-            hintText:decoration?.hintText,
-            hoverColor:decoration?.hoverColor,
-            icon:decoration?.icon,
-            isCollapsed:decoration?.isCollapsed,
-            isDense:decoration?.isDense,
-            labelStyle:decoration?.labelStyle,
-            labelText:decoration?.labelText,
-            semanticCounterText:decoration?.semanticCounterText,
-            suffix:decoration?.suffix,
-            suffixIcon:decoration?.suffixIcon,
-            suffixIconConstraints:decoration?.suffixIconConstraints,
-            suffixStyle:decoration?.suffixStyle,
-            suffixText:decoration?.suffixText,
-
-            prefixIcon:Container(
+  InputDecoration getInputDecoration(
+      {InputDecoration decoration, Widget prefix}) {
+    return decoration != null
+        ? InputDecoration(
+            alignLabelWithHint: decoration?.alignLabelWithHint,
+            border: decoration?.border,
+            contentPadding: decoration?.contentPadding,
+            counter: decoration?.counter,
+            counterStyle: decoration?.counterStyle,
+            counterText: decoration?.counterText,
+            disabledBorder: decoration?.disabledBorder,
+            enabled: decoration?.enabled,
+            enabledBorder: decoration?.enabledBorder,
+            errorBorder: decoration?.errorBorder,
+            errorMaxLines: decoration?.errorMaxLines,
+            errorStyle: decoration?.errorStyle,
+            errorText: decoration?.errorText,
+            fillColor: decoration?.fillColor,
+            filled: decoration?.filled,
+            floatingLabelBehavior: decoration?.floatingLabelBehavior,
+            focusColor: decoration?.focusColor,
+            focusedBorder: decoration?.focusedBorder,
+            focusedErrorBorder: decoration?.focusedErrorBorder,
+            helperMaxLines: decoration?.helperMaxLines,
+            helperStyle: decoration?.helperStyle,
+            helperText: decoration?.helperText,
+            hintMaxLines: decoration?.hintMaxLines,
+            hintStyle: decoration?.hintStyle,
+            hintText: decoration?.hintText,
+            hoverColor: decoration?.hoverColor,
+            icon: decoration?.icon,
+            isCollapsed: decoration?.isCollapsed,
+            isDense: decoration?.isDense,
+            labelStyle: decoration?.labelStyle,
+            labelText: decoration?.labelText,
+            semanticCounterText: decoration?.semanticCounterText,
+            suffix: decoration?.suffix,
+            suffixIcon: decoration?.suffixIcon,
+            suffixIconConstraints: decoration?.suffixIconConstraints,
+            suffixStyle: decoration?.suffixStyle,
+            suffixText: decoration?.suffixText,
+            prefixIcon: Container(
               padding: EdgeInsets.only(left: 20),
               width: 100,
               child: prefix,
             ),
-            prefix:decoration?.prefix,
-            prefixIconConstraints:decoration?.prefixIconConstraints,
-            prefixStyle:decoration?.prefixStyle,
-            prefixText:decoration?.prefixText,
-        )
-        :
-        InputDecoration(
-          border: widget.inputBorder ?? UnderlineInputBorder(),
-          hintText: widget.hintText,
-          prefixIcon:Container(
-            padding: EdgeInsets.only(left: 20),
-            width: 100,
-            child: prefix,
-          ),
-        );
+            prefix: decoration?.prefix,
+            prefixIconConstraints: decoration?.prefixIconConstraints,
+            prefixStyle: decoration?.prefixStyle,
+            prefixText: decoration?.prefixText,
+          )
+        : InputDecoration(
+            border: widget.inputBorder ?? UnderlineInputBorder(),
+            hintText: widget.hintText,
+            prefixIcon: Container(
+              padding: EdgeInsets.only(left: 20),
+              width: 100,
+              child: prefix,
+            ),
+          );
   }
 
   /// Validate the phone number when a change occurs
@@ -378,8 +378,9 @@ class _InputWidgetView
       textInputAction: widget.keyboardAction,
       style: widget.textStyle,
       decoration: state.getInputDecoration(
-        decoration:widget.inputDecoration,
+        decoration: widget.inputDecoration,
         prefix: SelectorButton(
+          shape: widget.shape,
           country: state.country,
           countries: state.countries,
           onCountryChanged: state.onCountryChanged,
@@ -402,15 +403,16 @@ class _InputWidgetView
         LengthLimitingTextInputFormatter(widget.maxLength),
         widget.formatInput
             ? AsYouTypeFormatter(
-          isoCode: countryCode,
-          dialCode: dialCode,
-          onInputFormatted: (TextEditingValue value) {
-            state.controller.value = value;
-          },
-        )
+                isoCode: countryCode,
+                dialCode: dialCode,
+                onInputFormatted: (TextEditingValue value) {
+                  state.controller.value = value;
+                },
+              )
             : FilteringTextInputFormatter.digitsOnly,
       ],
       onChanged: state.onChanged,
     );
   }
 }
+
