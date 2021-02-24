@@ -11,12 +11,14 @@ class CountrySearchListWidget extends StatefulWidget {
   final bool autoFocus;
   final bool showFlags;
   final bool useEmoji;
+  final BoxShape shape;
 
   CountrySearchListWidget(this.countries, this.locale,
       {this.searchBoxDecoration,
       this.scrollController,
       this.showFlags,
       this.useEmoji,
+      this.shape = BoxShape.circle,
       this.autoFocus = false});
 
   @override
@@ -83,7 +85,8 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         Container(
-          padding: const EdgeInsets.only(left: 15, right: 35, top: 20, bottom: 10),
+          padding:
+              const EdgeInsets.only(left: 15, right: 35, top: 20, bottom: 10),
           height: 70,
           child: TextFormField(
             key: Key(TestHelper.CountrySearchInputKeyValue),
@@ -105,7 +108,10 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
               return ListTile(
                 key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
                 leading: widget.showFlags
-                    ? _Flag(country: country, useEmoji: widget.useEmoji)
+                    ? _Flag(
+                        country: country,
+                        shape: widget.shape,
+                        useEmoji: widget.useEmoji)
                     : null,
                 title: Align(
                     alignment: AlignmentDirectional.centerStart,
@@ -128,10 +134,12 @@ class _CountrySearchListWidgetState extends State<CountrySearchListWidget> {
 
 class _Flag extends StatelessWidget {
   final Country country;
+  final bool showFlag;
   final bool useEmoji;
+  final BoxShape shape;
 
-  const _Flag({Key key, this.country, this.useEmoji}) : super(key: key);
-
+  const _Flag({Key key, this.country, this.showFlag, this.shape, this.useEmoji})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return country != null
@@ -142,15 +150,25 @@ class _Flag extends StatelessWidget {
                     style: Theme.of(context).textTheme.headline5,
                   )
                 : country?.flagUri != null
-                    ? CircleAvatar(
-                        radius: 16,
-                        backgroundImage: AssetImage(
-                          country.flagUri,
-                          package: 'intl_phone_number_input',
-                        ),
-                      )
+                    ? shape == BoxShape.rectangle
+                        ? Container(
+                            height: 16,
+                            width: 24,
+                            decoration: BoxDecoration(
+                                image: DecorationImage(
+                                    image: AssetImage(country?.flagUri,
+                                        package: 'intl_phone_number_input'),
+                                    fit: BoxFit.fitWidth)))
+                        : CircleAvatar(
+                            radius: 16,
+                            backgroundImage: AssetImage(
+                              country?.flagUri,
+                              package: 'intl_phone_number_input',
+                            ),
+                          )
                     : SizedBox.shrink(),
           )
         : SizedBox.shrink();
   }
 }
+
