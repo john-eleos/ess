@@ -321,6 +321,9 @@ class _InputWidgetState extends State<InternationalPhoneNumberInput> {
 
   /// Validate the phone number when a change occurs
   void onChanged(String value) {
+    TextSelection previousSelection = controller.selection;
+    controller.text = value;
+    controller.selection = previousSelection;
     phoneNumberControllerListener();
   }
 
@@ -415,4 +418,3 @@ class _InputWidgetView
     );
   }
 }
-
